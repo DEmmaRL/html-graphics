@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embudo de Selección FAANG</title>
+    <style>
+        :root {
+            --funnel-width: 800px;
+            --triangle-base-percent: 100%; /* Ancho en % de --funnel-width */
+            --triangle-height: 500px; /* Alto del triángulo en px */
+            --color-ats: #2c3e50;
+            --color-oa: #2980b9;
+            --color-loop: #8e44ad;
+            --color-offer: #27ae60;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .funnel-container {
+            width: var(--funnel-width);
+            height: var(--triangle-height);
+            overflow: hidden;
+            /* Cálculo: izquierda = (100% - base) / 2, derecha = izquierda + base */
+            clip-path: polygon(
+                calc((100% - var(--triangle-base-percent)) / 2) 0%,
+                calc((100% - var(--triangle-base-percent)) / 2 + var(--triangle-base-percent)) 0%,
+                50% 100%
+            );
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+
+        /* Cada etapa del embudo */
+        .stage {
+            width: 100%;
+            height: 100px;
+            padding: 18px 26px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            position: relative;
+            transition: transform 0.3s;
+            cursor: default;
+        }
+
+        .stage:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        /* Títulos y datos */
+        .stage-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .stage-desc {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* Formas de las capas (Trapecios y Triángulo) */
+        
+        /* 1. ATS - El más ancho */
+        .ats {
+            background-color: var(--color-ats);
+            width: 100%;
+        }
+
+        /* 2. OA - Evaluación Técnica */
+        .oa {
+            background-color: var(--color-oa);
+            width: 100%;
+            margin-top: -2px;
+        }
+
+        /* 3. The Loop - Entrevistas */
+        .loop {
+            background-color: var(--color-loop);
+            width: 100%;
+            margin-top: -2px;
+        }
+
+        /* 4. Oferta - La punta del triángulo */
+        .offer {
+            background-color: var(--color-offer);
+            width: 100%;
+            height: 180px;
+            margin-top: -2px;
+            padding: 22px 26px 26px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .stats-box {
+            margin-top: 30px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--color-offer);
+            max-width: 500px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>El Embudo de Selección (The Hiring Funnel)</h1>
+
+    <div class="funnel-container">
+        <div class="stage ats">
+            <p class="stage-title">El Muro del ATS</p>
+            <p class="stage-desc">75% de CVs descartados automáticamente</p>
+        </div>
+
+        <div class="stage oa">
+            <p class="stage-title">Evaluación Técnica (OA)</p>
+            <p class="stage-desc">Filtro de "IQ Técnico" (CodeSignal / HackerRank)</p>
+        </div>
+
+        <div class="stage loop">
+            <p class="stage-title">The Loop</p>
+            <p class="stage-desc">4 a 6 entrevistas (Sistemas y Algoritmos)</p>
+        </div>
+
+        <div class="stage offer">
+            <p class="stage-title">Oferta Final</p>
+            <p class="stage-desc">
+                <b>Microsoft: 0.35%</b><br>
+                Google: < 1%<br>
+                Amazon: 2-3%
+            </p>
+        </div>
+    </div>
+
+    <div class="stats-box">
+        <p><strong>Dato clave:</strong> En Microsoft, de cada 10,000 aplicantes, <b>solo 35</b> cruzan el umbral. La aplicación en frío se considera actualmente "saturada hasta la inoperancia".</p>
+    </div>
+
+</body>
+</html>
