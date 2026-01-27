@@ -8,7 +8,7 @@
         :root {
             --funnel-width: 800px;
             --triangle-base-percent: 100%; /* Ancho en % de --funnel-width */
-            --triangle-height: 500px; /* Alto del triángulo en px */
+            --triangle-height: 480px; /* Alto del triángulo en px */
             --color-ats: #2c3e50;
             --color-oa: #2980b9;
             --color-loop: #8e44ad;
@@ -53,11 +53,11 @@
         .stage {
             width: 100%;
             height: 100px;
-            padding: 18px 26px;
+            padding-top: 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             color: var(--text-light);
             position: relative;
@@ -73,13 +73,13 @@
         /* Títulos y datos */
         .stage-title {
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 20px;
             margin: 0;
             text-transform: uppercase;
         }
 
         .stage-desc {
-            font-size: 0.85rem;
+            font-size: 16px;
             opacity: 0.9;
             text-align: center;
             padding: 0 20px;
@@ -130,7 +130,6 @@
 
         .highlight {
             font-weight: bold;
-            color: #c0392b;
         }
     </style>
 </head>
@@ -140,26 +139,24 @@
 
     <div class="funnel-container">
         <div class="stage ats">
-            <p class="stage-title">El Muro del ATS</p>
+            <p class="stage-title">ATS (Applicant Tracking System)</p>
             <p class="stage-desc">75% de CVs descartados automáticamente</p>
         </div>
 
         <div class="stage oa">
-            <p class="stage-title">Evaluación Técnica (OA)</p>
-            <p class="stage-desc">Filtro de "IQ Técnico" (CodeSignal / HackerRank)</p>
+            <p class="stage-title">Online Assessment - OA</p>
+            <p class="stage-desc">Problem solving (CodeSignal / HackerRank)</p>
         </div>
 
         <div class="stage loop">
-            <p class="stage-title">The Loop</p>
-            <p class="stage-desc">4 a 6 entrevistas (Sistemas y Algoritmos)</p>
+            <p class="stage-title">Loop Interviews</p>
+            <p class="stage-desc">4 a 6 entrevistas (Técnicas y Behavioral)</p>
         </div>
 
         <div class="stage offer">
-            <p class="stage-title">Oferta Final</p>
+            <p class="stage-title">Return offer</p>
             <p class="stage-desc">
-                <b>Microsoft: 0.35%</b><br>
-                Google: < 1%<br>
-                Amazon: 2-3%
+                <span class="highlight">35 de 10,000</span>
             </p>
         </div>
     </div>
