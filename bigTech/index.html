@@ -50,9 +50,11 @@
         }
         .line-dotted {
             position: absolute;
-            border-top: 4px dotted rgba(0,0,0,0.08);
+            border-top: 4px dotted #754D47;
             height: 0;
             transform-origin: left;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
         }
         .node {
             position: absolute;
@@ -67,7 +69,7 @@
             box-shadow: 0 12px 24px rgba(0,0,0,0.2), 0 6px 12px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1);
             z-index: 2;
         }
-        .node img { width: 55px; filter: grayscale(1); opacity: 0.7; }
+        .node img { width: 55px; filter: grayscale(0.4); opacity: 0.7; }
 
         /* Foto Central */
         .profile-wrapper {
@@ -137,12 +139,12 @@
 
          <div class="graph-container">
             <div class="line" style="width: 400px; top: 50%; left: 10%; transform: rotate(45deg);"></div>
-            <div class="line" style="width: 300px; top: 27%; left: 50%; transform: rotate(90deg);"></div>
+            <div class="line" style="width: 300px; top: 30%; left: 50%; transform: rotate(90deg);"></div>
             <div class="line" style="width: 400px; top: 50%; left: 90%; transform: rotate(135deg);"></div>
 
-            <div class="line-dotted" style="width: 412px; top: 53%; left: 10.3%; transform: rotate(45deg);"></div>
-            <div class="line-dotted" style="width: 309px; top: 27.81%; left: 50.9%; transform: rotate(90deg);"></div>
-            <div class="line-dotted" style="width: 412px; top: 51.5%; left: 91.2%; transform: rotate(135deg);"></div>
+            <div class="line-dotted" style="width:200px; top: 60%; left: 15%; transform: rotate(45deg);"></div>
+            <div class="line-dotted" style="width: 140px; top: 40%; left: 51.9%; transform: rotate(90deg);"></div>
+            <div class="line-dotted" style="width: 200px; top: 60%; left: 85%; transform: rotate(135deg);"></div>
 
             <div class="node" style="top: 30%; left: 50%; transform: translateX(-50%);"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"></div>
             <div class="node" style="top: 42%; left: 3%;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-icon.png"></div>
@@ -158,9 +160,8 @@
         </div>
 
         <div class="profile-wrapper">
-            <div class="profile-circle">
+            <div class="profile-circle" style="background: #754D47;">
                 <div class="profile-bg">
-                    <img src="images/oracle-uncut.png" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <img src="images/oracle-cut.png" class="profile-cut">
             </div>
