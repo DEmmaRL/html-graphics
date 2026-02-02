@@ -88,14 +88,18 @@
             overflow: hidden;
             z-index: 1;
         }
+        .profile-bg img {
+            filter: grayscale(0);
+        }
         .profile-cut {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translateY(-16px) scale(1.60) rotate(-0.6deg);
-            filter: drop-shadow(0 26px 32px rgba(0,0,0,0.35))
+            transform: translateY(-16px) scale(2) rotate(-0.6deg);
+                filter: grayscale(0.70)
+                    drop-shadow(0 26px 32px rgba(0,0,0,0.35))
                     drop-shadow(0 8px 12px rgba(0,0,0,0.2));
             z-index: 2;
             pointer-events: none;
