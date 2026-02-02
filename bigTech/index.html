@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Flyer Tech Sobrio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --beige: #F5F2ED;
+            --dark: #1A1A1A;
+            --accent: #3b82f6;
+        }
+        body {
+            background: #E5E7EB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'DM+Sans', sans-serif;
+        }
+        /* Ratio 4:5 - Profesional */
+        .flyer {
+            width: 864px; 
+            height: 1080px;
+            background: var(--beige);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: var(--dark);
+        }
+
+        /* El Grafo Detrás */
+        .graph-container {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            z-index: 1;
+        }
+        .line {
+            position: absolute;
+            background: rgba(0,0,0,0.1);
+            height: 1px;
+            transform-origin: left;
+        }
+        .node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+        .node img { width: 35px; filter: grayscale(1); opacity: 0.7; }
+
+        /* Foto Central */
+        .profile-wrapper {
+            position: relative;
+            z-index: 10;
+            margin-top: 180px;
+            align-self: center;
+        }
+        .profile-circle {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 8px solid var(--beige);
+            background: #ddd;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Footer Sólido */
+        .footer-banner {
+            background: var(--dark);
+            color: white;
+            margin-top: auto;
+            padding: 40px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flyer">
+        <div class="graph-container">
+            <div class="line" style="width: 400px; top: 50%; left: 10%; transform: rotate(45deg);"></div>
+            <div class="line" style="width: 300px; top: 20%; left: 50%; transform: rotate(90deg);"></div>
+            <div class="line" style="width: 400px; top: 50%; left: 90%; transform: rotate(135deg);"></div>
+
+            <div class="node" style="top: 0; left: 50%; transform: translateX(-50%);"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"></div>
+            <div class="node" style="top: 20%; left: 10%;"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg"></div>
+            <div class="node" style="top: 20%; right: 10%;"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"></div>
+            <div class="node" style="bottom: 10%; left: 0%;"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"></div>
+            <div class="node" style="bottom: 10%; right: 0%;"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"></div>
+            <div class="node" style="top: 60%; left: -5%;"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"></div>
+        </div>
+
+        <div class="profile-wrapper">
+            <div class="profile-circle">
+                <img src="tu_foto_aqui.jpg" style="width: 100%; hieght: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+        <div class="text-center px-12 mt-12 z-20">
+            <h1 class="text-6xl font-bold tracking-tighter leading-none mb-4 uppercase italic">
+                Asegura tu futuro en Big Tech
+            </h1>
+            <p class="font-mono text-sm tracking-widest text-gray-500 uppercase">
+                // Estrategia de carrera para estudiantes
+            </p>
+        </div>
+
+        <div class="footer-banner">
+            <div class="flex justify-between items-end">
+                <div>
+                    <h2 class="text-3xl font-bold leading-tight">CUCEI UDG</h2>
+                    <p class="text-blue-400 font-mono text-sm">Auditorio Modular | 2026</p>
+                </div>
+                <div class="text-right flex gap-8 items-center opacity-50">
+                    <div class="w-16 h-8 bg-white/20 rounded"></div>
+                    <div class="w-16 h-8 bg-white/20 rounded"></div>
+                    <div class="w-16 h-8 bg-white/20 rounded"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
