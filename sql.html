@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        :root {
+            --bg-color: #d4d4d4;
+            --text-color: #000000;
+            --table-border: 2px solid #000000;
+            --header-bg: #555555;
+            --header-text: #ffffff;
+            --pk-color: #b30000;
+            --fk-color: #0000a0;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            font-size: 14px;
+        }
+        h1 {
+            text-transform: uppercase;
+            border-bottom: 4px solid black;
+            margin-bottom: 30px;
+        }
+        h2 {
+            background-color: black;
+            color: white;
+            padding: 5px 10px;
+            margin-top: 40px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .schema-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .table-card {
+            background: #ffffff;
+            border: var(--table-border);
+            border-radius: 0; /* CERO bordes redondeados */
+            box-shadow: none; /* SIN sombras */
+            width: 100%;
+            max-width: 380px;
+        }
+        .table-header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: var(--table-border);
+        }
+        .table-body {
+            padding: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            padding: 4px 0;
+            border-bottom: 1px dashed #777; /* Separador tosco */
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .pk {
+            font-weight: 900;
+            text-decoration: underline;
+            color: var(--pk-color);
+        }
+        .fk {
+            font-weight: bold;
+            font-style: italic;
+            color: var(--fk-color);
+        }
+        .legend {
+            border: 2px solid black;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: white;
+        }
+        .badge {
+            padding: 2px 4px;
+            border-radius: 0; /* Cuadrado */
+            font-size: 0.9em;
+            color: white;
+            margin-right: 5px;
+            border: 1px solid black;
+            font-weight: bold;
+        }
+        .bg-pk { background-color: var(--pk-color); }
+        .bg-fk { background-color: var(--fk-color); }
+    </style>
+</head>
+<body>
+    
+    <div class=> 
+        Clave primaria (Subrayado) &nbsp;&nbsp;
+        Clave foranea (Cursiva)
+    </div>
+
+    <h2>Empresa</h2>
+    <div class="schema-container">
+        <div class="table-card">
+            <div class="table-header">DEPARTAMENTO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">Número</span></li>
+                    <li>Nombre</li>
+                    <li><span class="fk">Dni_Director</span></li>
+                    <li>FechaInicio_Director</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-header">UBICACIONES_DEPTO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">Número_Depto</span> <span class="fk">(FK)</span></li>
+                    <li><span class="pk">Ubicación</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-header">EMPLEADO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">Dni</span></li>
+                    <li>Nombre, Apellido1, Apellido2</li>
+                    <li>Dirección, Sexo, FechaNac</li>
+                    <li>Sueldo</li>
+                    <li><span class="fk">Num_Depto_Trabaja</span></li>
+                    <li><span class="fk">Dni_Supervisor</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-header">PROYECTO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">Número</span></li>
+                    <li>Nombre</li>
+                    <li>Ubicación</li>
+                    <li><span class="fk">Num_Depto_Controla</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-header">TRABAJA_EN</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk"><span class="fk">Dni_Empleado</span></span></li>
+                    <li><span class="pk"><span class="fk">Num_Proyecto</span></span></li>
+                    <li>Horas</li>
+                </ul>
+            </div>
+        </div>
+
+         <div class="table-card">
+            <div class="table-header">SUBORDINADO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk"><span class="fk">Dni_Empleado</span></span></li>
+                    <li><span class="pk">Nombre_Subordinado</span></li>
+                    <li>Sexo, FechaNac, Relación</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2>Avión</h2>
+    <div class="schema-container">
+        <div class="table-card">
+            <div class="table-header">AEROPUERTO</div>
+            <div class="table-body">
+                <ul><li><span class="pk">CodAeropuerto</span>, Nombre, Ciudad, Prov</li></ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">TIPO_AVIÓN</div>
+            <div class="table-body">
+                <ul><li><span class="pk">NombreTipo</span>, MaxAsientos, Compañía</li></ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">AVIÓN</div>
+            <div class="table-body">
+                <ul><li><span class="pk">IdAvión</span>, NumTotalAsientos, <span class="fk">NombreTipo</span></li></ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">PUEDE_ATERRIZAR</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk"><span class="fk">CodAeropuerto</span></span></li>
+                    <li><span class="pk"><span class="fk">NombreTipo</span></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">PLAN_VUELO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">NumPlan</span>, HoraSalProg, HoraLlegProg</li>
+                    <li><span class="fk">CodAeropuerto_Salida</span></li>
+                    <li><span class="fk">CodAeropuerto_Llegada</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">VUELO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk"><span class="fk">NumPlan</span></span></li>
+                    <li><span class="pk">NúmeroVuelo</span></li>
+                    <li>Aerolínea, DíasSem</li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">INSTANCIA_PLAN</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk"><span class="fk">NumPlan</span></span></li>
+                    <li><span class="pk"><span class="fk">NúmeroVuelo</span></span></li>
+                    <li><span class="pk">Fecha</span></li>
+                    <li>NumPlazasDisp, HoraSal...</li>
+                    <li><span class="fk">IdAvión</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">PLAZA</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk"><span class="fk">NumPlan</span></span></li>
+                    <li><span class="pk"><span class="fk">NúmeroVuelo</span></span></li>
+                    <li><span class="pk"><span class="fk">Fecha</span></span></li>
+                    <li><span class="pk">NumPlaza</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">RESERVA</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">Id_Reserva</span></li>
+                    <li>NomCliente, TlfC</li>
+                    <li><span class="fk">FK_Plaza_Completa</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2>ER2</h2>
+    <div class="schema-container">
+        <div class="table-card">
+            <div class="table-header">USUARIO</div>
+            <div class="table-body">
+                <ul><li><span class="pk">id_usuario</span>, nombre, password, logged, permisos</li></ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">FICHA</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">id_ficha</span></li>
+                    <li>biografía</li>
+                    <li><span class="fk">id_usuario</span> (Unique)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">CATEGORÍA</div>
+            <div class="table-body">
+                <ul><li><span class="pk">id_categoría</span>, descripción</li></ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">ANUNCIO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">id_anuncio</span></li>
+                    <li>fecha, texto</li>
+                    <li><span class="fk">id_usuario</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">ARTÍCULO</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk">id_artículo</span></li>
+                    <li>título, fecha, texto, autorizado</li>
+                    <li><span class="fk">id_usuario</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="table-card">
+            <div class="table-header">CLASIFICA (RELACIÓN N:M)</div>
+            <div class="table-body">
+                <ul>
+                    <li><span class="pk"><span class="fk">id_artículo</span></span></li>
+                    <li><span class="pk"><span class="fk">id_categoría</span></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
