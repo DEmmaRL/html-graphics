@@ -107,10 +107,10 @@
         Clave foranea (Cursiva)
     </div>
 
-    <h2>Empresa</h2>
+    <h2>Biblioteca</h2>
     <div class="schema-container">
         <div class="table-card">
-            <div class="table-header">DEPARTAMENTO</div>
+            <div class="table-header">Libro</div>
             <div class="table-body">
                 <ul>
                     <li><span class="pk">Número</span></li>
@@ -180,144 +180,7 @@
         </div>
     </div>
 
-    <h2>Avión</h2>
-    <div class="schema-container">
-        <div class="table-card">
-            <div class="table-header">AEROPUERTO</div>
-            <div class="table-body">
-                <ul><li><span class="pk">CodAeropuerto</span>, Nombre, Ciudad, Prov</li></ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">TIPO_AVIÓN</div>
-            <div class="table-body">
-                <ul><li><span class="pk">NombreTipo</span>, MaxAsientos, Compañía</li></ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">AVIÓN</div>
-            <div class="table-body">
-                <ul><li><span class="pk">IdAvión</span>, NumTotalAsientos, <span class="fk">NombreTipo</span></li></ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">PUEDE_ATERRIZAR</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk"><span class="fk">CodAeropuerto</span></span></li>
-                    <li><span class="pk"><span class="fk">NombreTipo</span></span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">PLAN_VUELO</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk">NumPlan</span>, HoraSalProg, HoraLlegProg</li>
-                    <li><span class="fk">CodAeropuerto_Salida</span></li>
-                    <li><span class="fk">CodAeropuerto_Llegada</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">VUELO</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk"><span class="fk">NumPlan</span></span></li>
-                    <li><span class="pk">NúmeroVuelo</span></li>
-                    <li>Aerolínea, DíasSem</li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">INSTANCIA_PLAN</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk"><span class="fk">NumPlan</span></span></li>
-                    <li><span class="pk"><span class="fk">NúmeroVuelo</span></span></li>
-                    <li><span class="pk">Fecha</span></li>
-                    <li>NumPlazasDisp, HoraSal...</li>
-                    <li><span class="fk">IdAvión</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">PLAZA</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk"><span class="fk">NumPlan</span></span></li>
-                    <li><span class="pk"><span class="fk">NúmeroVuelo</span></span></li>
-                    <li><span class="pk"><span class="fk">Fecha</span></span></li>
-                    <li><span class="pk">NumPlaza</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">RESERVA</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk">Id_Reserva</span></li>
-                    <li>NomCliente, TlfC</li>
-                    <li><span class="fk">FK_Plaza_Completa</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <h2>ER2</h2>
-    <div class="schema-container">
-        <div class="table-card">
-            <div class="table-header">USUARIO</div>
-            <div class="table-body">
-                <ul><li><span class="pk">id_usuario</span>, nombre, password, logged, permisos</li></ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">FICHA</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk">id_ficha</span></li>
-                    <li>biografía</li>
-                    <li><span class="fk">id_usuario</span> (Unique)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">CATEGORÍA</div>
-            <div class="table-body">
-                <ul><li><span class="pk">id_categoría</span>, descripción</li></ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">ANUNCIO</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk">id_anuncio</span></li>
-                    <li>fecha, texto</li>
-                    <li><span class="fk">id_usuario</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">ARTÍCULO</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk">id_artículo</span></li>
-                    <li>título, fecha, texto, autorizado</li>
-                    <li><span class="fk">id_usuario</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="table-card">
-            <div class="table-header">CLASIFICA (RELACIÓN N:M)</div>
-            <div class="table-body">
-                <ul>
-                    <li><span class="pk"><span class="fk">id_artículo</span></span></li>
-                    <li><span class="pk"><span class="fk">id_categoría</span></span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+   
 
 </body>
 </html>
