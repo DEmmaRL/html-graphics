@@ -53,13 +53,21 @@
         }
         .line-dotted {
             position: absolute;
-            border-top: 4px dotted #754D47;
-            height: 0;
+            height: 4px;
             transform-origin: left;
+            background-image: repeating-linear-gradient(
+                to right,
+                #754D47 0px,
+                #754D47 6px,
+                transparent 6px,
+                transparent 14px
+            );
+            background-size: 14px 4px;
+            background-position: 0 0;
             -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
             mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
             transform: rotate(var(--line-rot)) scaleX(0);
-            animation: line-draw 1.4s ease-out both, dotted-flow 8s linear infinite 1.4s;
+            animation: line-draw 1.4s ease-out both, dotted-flow 2.8s linear infinite 1.4s;
         }
         .node {
             position: absolute;
@@ -141,9 +149,9 @@
             50% { opacity: 1; }
         }
         @keyframes dotted-flow {
-            0% { transform: rotate(var(--line-rot)) scaleX(1); opacity: 0.5; }
+            0% { background-position: 0 0; opacity: 0.6; }
             50% { opacity: 1; }
-            100% { transform: rotate(var(--line-rot)) scaleX(1); opacity: 0.5; }
+            100% { background-position: 28px 0; opacity: 0.6; }
         }
         @keyframes node-float {
             0%, 100% { transform: translateX(var(--node-x, 0)) translateY(0) scale(1); }
