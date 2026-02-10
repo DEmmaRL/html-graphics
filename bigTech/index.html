@@ -140,6 +140,20 @@
             z-index: 20;
         }
 
+        .speaker-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        .speaker-badge::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.6) 45%, transparent 60%);
+            transform: translateX(-140%);
+            animation: badge-shine 3.6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
         @keyframes line-draw {
             0% { transform: rotate(var(--line-rot)) scaleX(0); opacity: 0.2; }
             100% { transform: rotate(var(--line-rot)) scaleX(1); opacity: 1; }
@@ -168,6 +182,12 @@
         @keyframes graph-float {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-6px); }
+        }
+        @keyframes badge-shine {
+            0% { transform: translateX(-140%); opacity: 0; }
+            30% { opacity: 0.9; }
+            60% { transform: translateX(140%); opacity: 0; }
+            100% { transform: translateX(140%); opacity: 0; }
         }
     </style>
 </head>
@@ -229,7 +249,7 @@
         </div>
 
         <div style="position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%; overflow: hidden; z-index: 30; pointer-events: none;">
-            <div style="position: absolute; bottom: 110px; left: 0; right: 0; padding: 12px 0; background: #ddd; text-align: center; pointer-events: auto; border-left: 8px solid var(--beige); border-right: 8px solid var(--beige);">
+            <div class="speaker-badge" style="position: absolute; bottom: 110px; left: 0; right: 0; padding: 12px 0; background: #ddd; text-align: center; pointer-events: auto; border-left: 8px solid var(--beige); border-right: 8px solid var(--beige);">
                 <p class="font-mono text-xs tracking-widest uppercase text-gray-500">Speaker</p>
                 <p class="font-bold text-xl tracking-tight" style="color: #754D47;">Diego Rivera</p>
             </div>
