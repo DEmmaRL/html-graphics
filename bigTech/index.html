@@ -105,7 +105,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translateY(-16px) scale(2) rotate(-0.6deg);
+            transform: translateY(-16px) scale(2) rotate(-0.6deg) translateX(1%);
                 filter: grayscale(0.70)
                     drop-shadow(0 26px 32px rgba(0,0,0,0.35))
                     drop-shadow(0 8px 12px rgba(0,0,0,0.2));
@@ -143,10 +143,10 @@
                 </div>
                 <div class="flex items-center justify-between ml-2 gap-6">
                     <p class="font-mono text-lg tracking-widest uppercase font-semibold" style="color: #754D47;">25 de Febrero | 1:00–3:00 PM</p>
-                    <p class="font-mono text-base tracking-widest uppercase font-semibold" style="color: #754D47;">Cupos limitados</p>
+                    <p class="font-mono text-base tracking-widest uppercase font-semibold" style="color: black;">Auditorio Nikolai (Módulo Y)</p>
                 </div>
-                <div class="flex justify-center mt-8">
-                    <p class="text-center font-mono text-base tracking-widest text-gray-500 uppercase">Auditorio Nikolai (Módulo Y)</p>
+                <div class="flex mt-4 ml-2">
+                    <p class="text-left font-mono text-base tracking-widest text-[#754D47] font-semibold uppercase">Cupos limitados</p>
                 </div>
             </div>
         </div>
@@ -178,6 +178,13 @@
                 <div class="profile-bg">
                 </div>
                 <img src="images/oracle-cut.png" class="profile-cut">
+            </div>
+        </div>
+
+        <div style="position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%; overflow: hidden; z-index: 30; pointer-events: none;">
+            <div style="position: absolute; bottom: 110px; left: 0; right: 0; padding: 12px 0; background: #ddd; text-align: center; pointer-events: auto; border-left: 8px solid var(--beige); border-right: 8px solid var(--beige);">
+                <p class="font-mono text-xs tracking-widest uppercase text-gray-500">Speaker</p>
+                <p class="font-bold text-xl tracking-tight" style="color: #754D47;">Diego Rivera</p>
             </div>
         </div>
 
