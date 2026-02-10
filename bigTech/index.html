@@ -41,12 +41,15 @@
             width: 600px;
             height: 600px;
             z-index: 1;
+            animation: graph-float 8s ease-in-out infinite;
         }
         .line {
             position: absolute;
             background: rgba(0,0,0,0.1);
             height: 2px;
             transform-origin: left;
+            transform: rotate(var(--line-rot)) scaleX(0);
+            animation: line-draw 1.2s ease-out both, line-pulse 8s ease-in-out infinite 1.2s;
         }
         .line-dotted {
             position: absolute;
@@ -55,6 +58,8 @@
             transform-origin: left;
             -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
             mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
+            transform: rotate(var(--line-rot)) scaleX(0);
+            animation: line-draw 1.4s ease-out both, dotted-flow 8s linear infinite 1.4s;
         }
         .node {
             position: absolute;
@@ -68,6 +73,8 @@
             justify-content: center;
             box-shadow: 0 12px 24px rgba(0,0,0,0.2), 0 6px 12px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1);
             z-index: 2;
+            transform: translateX(var(--node-x, 0)) translateY(0) scale(1);
+            animation: node-float 8s ease-in-out infinite;
         }
         .node img { width: 55px; filter: grayscale(0.4); opacity: 0.7; }
 
@@ -88,6 +95,7 @@
             overflow: visible;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             position: relative;
+            animation: profile-breathe 8s ease-in-out infinite;
         }
         .profile-bg {
             position: absolute;
@@ -105,12 +113,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translateY(-16px) scale(2) rotate(-0.6deg) translateX(1%);
+            transform: translateY(-16px) scale(2) rotate(-0.6deg) translateX(16px);
                 filter: grayscale(0.70)
                     drop-shadow(0 26px 32px rgba(0,0,0,0.35))
                     drop-shadow(0 8px 12px rgba(0,0,0,0.2));
             z-index: 2;
             pointer-events: none;
+            animation: portrait-drift 8s ease-in-out infinite;
         }
 
         /* Footer Sólido */
@@ -121,6 +130,36 @@
             padding-left: 20px;
             padding-right: 20px;
             z-index: 20;
+        }
+
+        @keyframes line-draw {
+            0% { transform: rotate(var(--line-rot)) scaleX(0); opacity: 0.2; }
+            100% { transform: rotate(var(--line-rot)) scaleX(1); opacity: 1; }
+        }
+        @keyframes line-pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        @keyframes dotted-flow {
+            0% { transform: rotate(var(--line-rot)) scaleX(1); opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { transform: rotate(var(--line-rot)) scaleX(1); opacity: 0.5; }
+        }
+        @keyframes node-float {
+            0%, 100% { transform: translateX(var(--node-x, 0)) translateY(0) scale(1); }
+            50% { transform: translateX(var(--node-x, 0)) translateY(-8px) scale(1.02); }
+        }
+        @keyframes profile-breathe {
+            0%, 100% { transform: scale(1); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+            50% { transform: scale(1.02); box-shadow: 0 26px 48px rgba(0,0,0,0.18); }
+        }
+        @keyframes portrait-drift {
+            0%, 100% { transform: translateY(-16px) scale(1.95) rotate(-0.6deg) translateX(1%); }
+            50% { transform: translateY(-20px) scale(1.98) rotate(-0.2deg) translateX(1%); }
+        }
+        @keyframes graph-float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-6px); }
         }
     </style>
 </head>
@@ -152,25 +191,25 @@
         </div>
 
          <div class="graph-container">
-            <div class="line" style="width: 400px; top: 50%; left: 10%; transform: rotate(45deg);"></div>
-            <div class="line" style="width: 300px; top: 30%; left: 50%; transform: rotate(90deg);"></div>
-            <div class="line" style="width: 400px; top: 50%; left: 90%; transform: rotate(135deg);"></div>
+            <div class="line" style="width: 400px; top: 50%; left: 10%; --line-rot: 45deg;"></div>
+            <div class="line" style="width: 300px; top: 30%; left: 50%; --line-rot: 90deg; animation-delay: 0.15s;"></div>
+            <div class="line" style="width: 400px; top: 50%; left: 90%; --line-rot: 135deg; animation-delay: 0.3s;"></div>
 
-            <div class="line-dotted" style="width:200px; top: 60%; left: 15%; transform: rotate(45deg);"></div>
-            <div class="line-dotted" style="width: 140px; top: 40%; left: 51.9%; transform: rotate(90deg);"></div>
-            <div class="line-dotted" style="width: 200px; top: 60%; left: 85%; transform: rotate(135deg);"></div>
+            <div class="line-dotted" style="width:200px; top: 60%; left: 15%; --line-rot: 45deg; animation-delay: 0.2s;"></div>
+            <div class="line-dotted" style="width: 140px; top: 40%; left: 51.9%; --line-rot: 90deg; animation-delay: 0.35s;"></div>
+            <div class="line-dotted" style="width: 200px; top: 60%; left: 85%; --line-rot: 135deg; animation-delay: 0.5s;"></div>
 
-            <div class="node" style="top: 30%; left: 50%; transform: translateX(-50%);"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"></div>
-            <div class="node" style="top: 42%; left: 3%;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-icon.png" style="width: 60px;"></div>
-            <div class="node" style="top: 42%; right: 3%;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/amazon-icon.png"></div>
-            <div class="node" style="top: 90%; left: -18%;"><img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" style="width: 65px;"></div>
-            <div class="node" style="top: 90%; right: -18%;"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" style="width: 50px;"></div>
+            <div class="node" style="top: 30%; left: 50%; --node-x: -50%; animation-delay: 0.1s;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"></div>
+            <div class="node" style="top: 42%; left: 3%; animation-delay: 0.25s;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-icon.png" style="width: 60px;"></div>
+            <div class="node" style="top: 42%; right: 3%; animation-delay: 0.4s;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/amazon-icon.png"></div>
+            <div class="node" style="top: 90%; left: -18%; animation-delay: 0.55s;"><img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" style="width: 65px;"></div>
+            <div class="node" style="top: 90%; right: -18%; animation-delay: 0.7s;"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" style="width: 50px;"></div>
             
-            <div class="line" style="width: 200px; top: 99%; left: -2%; transform: rotate(0deg);"></div>
-            <div class="line" style="width: 200px; top: 99%; right: -2%; transform: rotate(0deg);"></div>
+            <div class="line" style="width: 200px; top: 99%; left: -2%; --line-rot: 0deg; animation-delay: 0.6s;"></div>
+            <div class="line" style="width: 200px; top: 99%; right: -2%; --line-rot: 0deg; animation-delay: 0.75s;"></div>
 
-            <div class="line-dotted" style="width: 206px; top: 100.99%; left: -1.5%; transform: rotate(0deg);"></div>
-            <div class="line-dotted" style="width: 206px; top: 100.99%; right: -1.5%; transform: rotate(0deg);"></div>
+            <div class="line-dotted" style="width: 206px; top: 100.99%; left: -1.5%; --line-rot: 0deg; animation-delay: 0.8s;"></div>
+            <div class="line-dotted" style="width: 206px; top: 100.99%; right: -1.5%; --line-rot: 0deg; animation-delay: 0.95s;"></div>
         </div>
 
         <div class="profile-wrapper">
