@@ -93,6 +93,8 @@
             bottom: 50px;
             transform: translateX(-50%);
             z-index: 15;
+            width: 500px;
+            height: 500px;
         }
         .profile-circle {
             width: 500px;
@@ -100,7 +102,7 @@
             border-radius: 50%;
             border: 8px solid var(--beige);
             background: #ddd;
-            overflow: visible;
+            overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             position: relative;
             animation: profile-breathe 8s ease-in-out infinite;
@@ -121,7 +123,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translateY(-16px) scale(2) rotate(-0.6deg) translateX(16px);
+            transform: translateY(-64px) scale(1.85) rotate(-0.6deg) translateX(16px);
                 filter: grayscale(0.70)
                     drop-shadow(0 26px 32px rgba(0,0,0,0.35))
                     drop-shadow(0 8px 12px rgba(0,0,0,0.2));
@@ -129,16 +131,22 @@
             pointer-events: none;
             animation: portrait-drift 8s ease-in-out infinite;
         }
-
-        /* Footer Sólido */
-        .footer-banner {
-            background: var(--dark);
-            color: white;
-            margin-top: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-            z-index: 20;
+        .profile-cut-top {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateY(-96px) scale(1.85) rotate(-0.6deg) translateX(16px);
+            filter: grayscale(0.70)
+                drop-shadow(0 26px 32px rgba(0,0,0,0.35))
+                drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+            clip-path: inset(0 0 52% 0);
+            z-index: 6;
+            pointer-events: none;
+            animation: portrait-drift 8s ease-in-out infinite;
         }
+
 
         .speaker-badge {
             position: relative;
@@ -208,12 +216,11 @@
                         La estrategia para entrar a las grandes ligas siendo estudiante
                     </p>
                 </div>
-                <div class="flex items-center justify-between ml-2 gap-6">
+                <div class="ml-2 mt-2 grid grid-cols-[auto,1fr] items-start gap-x-6 gap-y-2">
                     <p class="font-mono text-lg tracking-widest uppercase font-semibold" style="color: #754D47;">25 de Febrero | 1:00–3:00 PM</p>
-                    <p class="font-mono text-base tracking-widest uppercase font-semibold" style="color: black;">Auditorio Nikolai (Módulo Y)</p>
-                </div>
-                <div class="flex mt-4 ml-2">
-                    <p class="text-left font-mono text-base tracking-widest text-[#754D47] font-semibold uppercase">Cupos limitados</p>
+                    <p class="font-mono text-base tracking-widest uppercase font-semibold mr-1 text-right justify-self-end text-gray-700">Auditorio Antonio Alatorre</p>
+                    <p class="text-left font-mono text-base tracking-widest text-[#754D47] mt-1 font-semibold uppercase">Cupos limitados</p>
+                    <p class="font-mono text-base tracking-widest uppercase font-semibold text-right justify-self-end text-gray-700">(Módulo O)</p>
                 </div>
             </div>
         </div>
@@ -246,22 +253,16 @@
                 </div>
                 <img src="images/oracle-cut.png" class="profile-cut">
             </div>
+            <img src="images/oracle-cut.png" class="profile-cut-top">
         </div>
 
         <div style="position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%; overflow: hidden; z-index: 30; pointer-events: none;">
-            <div class="speaker-badge" style="position: absolute; bottom: 110px; left: 0; right: 0; padding: 12px 0; background: #ddd; text-align: center; pointer-events: auto; border-left: 8px solid var(--beige); border-right: 8px solid var(--beige);">
-                <p class="font-mono text-xs tracking-widest uppercase text-gray-500">Speaker</p>
-                <p class="font-bold text-xl tracking-tight" style="color: #754D47;">Diego Rivera</p>
+            <div class="speaker-badge" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 44px 0; padding-top: 28px; background: var(--beige); text-align: center; pointer-events: auto; border-left: 8px solid var(--beige);">
+                <p class="font-mono text-xl tracking-widest uppercase text-gray-500">Speaker</p>
+                <p class="font-bold text-2xl tracking-tight" style="color: #754D47;">Diego Rivera</p>
             </div>
         </div>
 
-        <div class="footer-banner">
-            <div class="flex justify-between items-end gap-8 px-6 py-6 opacity-50">
-                <img src="images/footer/accionU.png" class="h-28">
-                <img src="images/footer/consejo.png" class="h-28">
-                <img src="images/footer/accionU.png" class="h-28">
-            </div>
-        </div>
     </div>
 
 </body>
