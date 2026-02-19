@@ -47,14 +47,14 @@
             position: absolute;
             background: rgba(0,0,0,0.1);
             height: 2px;
-            transform-origin: left;
+            transform-origin: var(--line-origin, left);
             transform: rotate(var(--line-rot)) scaleX(0);
-            animation: line-draw 1.2s ease-out both, line-pulse 8s ease-in-out infinite 1.2s;
+            animation: line-draw 0.8s ease-out both, line-pulse 8s ease-in-out infinite 0s;
         }
         .line-dotted {
             position: absolute;
             height: 4px;
-            transform-origin: left;
+            transform-origin: var(--line-origin, left);
             background-image: repeating-linear-gradient(
                 to right,
                 #754D47 0px,
@@ -67,7 +67,7 @@
             -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
             mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
             transform: rotate(var(--line-rot)) scaleX(0);
-            animation: line-draw 1.4s ease-out both, dotted-flow 2.8s linear infinite 1.4s;
+                animation: line-draw 0.8s ease-out both, dotted-flow 2.8s linear infinite 0s;
         }
         .node {
             position: absolute;
@@ -227,12 +227,12 @@
 
          <div class="graph-container">
             <div class="line" style="width: 400px; top: 50%; left: 10%; --line-rot: 45deg;"></div>
-            <div class="line" style="width: 300px; top: 30%; left: 50%; --line-rot: 90deg; animation-delay: 0.15s;"></div>
-            <div class="line" style="width: 400px; top: 50%; left: 90%; --line-rot: 135deg; animation-delay: 0.3s;"></div>
+            <div class="line" style="width: 300px; top: 30%; left: 50%; --line-rot: 90deg;"></div>
+            <div class="line" style="width: 400px; top: 50%; left: 90%; --line-rot: 135deg;"></div>
 
-            <div class="line-dotted" style="width:200px; top: 60%; left: 15%; --line-rot: 45deg; animation-delay: 0.2s;"></div>
-            <div class="line-dotted" style="width: 140px; top: 40%; left: 51.9%; --line-rot: 90deg; animation-delay: 0.35s;"></div>
-            <div class="line-dotted" style="width: 200px; top: 60%; left: 85%; --line-rot: 135deg; animation-delay: 0.5s;"></div>
+            <div class="line-dotted" style="width:200px; top: 60%; left: 15%; --line-rot: 45deg;"></div>
+            <div class="line-dotted" style="width: 140px; top: 40%; left: 51.9%; --line-rot: 90deg;"></div>
+            <div class="line-dotted" style="width: 200px; top: 60%; left: 85%; --line-rot: 135deg;"></div>
 
             <div class="node" style="top: 30%; left: 50%; --node-x: -50%; animation-delay: 0.1s;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"></div>
             <div class="node" style="top: 42%; left: 3%; animation-delay: 0.25s;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-icon.png" style="width: 60px;"></div>
@@ -240,11 +240,11 @@
             <div class="node" style="top: 90%; left: -18%; animation-delay: 0.55s;"><img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" style="width: 65px;"></div>
             <div class="node" style="top: 90%; right: -18%; animation-delay: 0.7s;"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" style="width: 50px;"></div>
             
-            <div class="line" style="width: 200px; top: 99%; left: -2%; --line-rot: 0deg; animation-delay: 0.6s;"></div>
-            <div class="line" style="width: 200px; top: 99%; right: -2%; --line-rot: 0deg; animation-delay: 0.75s;"></div>
+            <div class="line" style="width: 200px; top: 99%; left: -2%; --line-rot: 0deg;"></div>
+            <div class="line" style="width: 200px; top: 99%; right: -2%; --line-rot: 0deg; --line-origin: right;"></div>
 
-            <div class="line-dotted" style="width: 206px; top: 100.99%; left: -1.5%; --line-rot: 0deg; animation-delay: 0.8s;"></div>
-            <div class="line-dotted" style="width: 206px; top: 100.99%; right: -1.5%; --line-rot: 0deg; animation-delay: 0.95s;"></div>
+            <div class="line-dotted" style="width: 206px; top: 100.99%; left: -1.5%; --line-rot: 0deg;"></div>
+            <div class="line-dotted" style="width: 206px; top: 100.99%; right: -1.5%; --line-rot: 0deg; --line-origin: right;"></div>
         </div>
 
         <div class="profile-wrapper">
