@@ -90,8 +90,25 @@
             max-width: 64ch;
         }
 
+        .timeline-text strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .timeline-text em {
+            color: var(--pale-oak);
+            font-style: italic;
+        }
+
+        .timeline-text u {
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+            text-underline-offset: 3px;
+            text-decoration-thickness: 2px;
+        }
+
         .slide-svg {
-            width: clamp(200px, 24vw, 340px);
+            width: clamp(280px, 100vw, 540px);
             height: auto;
             margin-top: 8px;
             filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.25));
@@ -236,36 +253,36 @@
             <div class="swiper-wrapper">
                 <section class="swiper-slide" data-date="Ago - Sep">
                     <div class="slide-content">
-                        <span class="timeline-year">Fase 01</span>
+                        <span class="timeline-year">Fase 01 · Aplicaciones</span>
                         <h2 class="timeline-title">Agosto - Septiembre</h2>
-                        <p class="timeline-text">Abre la temporada de internships. Se envían aplicaciones masivas a empresas como Google, Microsoft, Amazon y startups.</p>
-                        <img class="slide-svg" src="images/phase-1.svg" alt="Fase de aplicaciones" />
+                        <p class="timeline-text">Inicia la temporada de <strong>recruiting</strong>. Durante este periodo se publican la mayoría de vacantes, se abren formularios de aplicación y comienza el primer filtro de perfiles por parte de recruiters y sistemas automáticos <em>(ATS)</em>.</p>
+                        <img class="slide-svg" src="images/phase-1.png" alt="Fase de aplicaciones" />
                     </div>
                 </section>
 
                 <section class="swiper-slide" data-date="Oct - Nov">
                     <div class="slide-content">
-                        <span class="timeline-year">Fase 02</span>
+                        <span class="timeline-year">Fase 02 · Evaluaciones</span>
                         <h2 class="timeline-title">Octubre - Noviembre</h2>
-                        <p class="timeline-text">Llegan los Online Assessments (OA), desafíos de código y primeras rondas técnicas o de recruiter screen.</p>
+                        <p class="timeline-text">Comienzan los <strong>Online Assessments</strong>, pruebas técnicas iniciales y primeras entrevistas de preselección. Las empresas usan esta etapa para <u>reducir el volumen de candidaturas</u> y avanzar con perfiles que cumplen requisitos técnicos y de comunicación.</p>
                         <img class="slide-svg" src="images/phase-2.svg" alt="Fase de evaluaciones" />
                     </div>
                 </section>
 
                 <section class="swiper-slide" data-date="Ene - Feb">
                     <div class="slide-content">
-                        <span class="timeline-year">Fase 03</span>
+                        <span class="timeline-year">Fase 03 · Entrevistas Finales</span>
                         <h2 class="timeline-title">Enero - Febrero</h2>
-                        <p class="timeline-text">Segunda ola de procesos. Entrevistas finales, decisiones de oferta y preparación logística para verano.</p>
+                        <p class="timeline-text">Se activa una <strong>segunda ola de procesos</strong> con entrevistas finales, paneles técnicos y decisiones de contratación. En esta fase se emiten ofertas, se cierran cupos de verano y se definen condiciones administrativas de incorporación.</p>
                         <img class="slide-svg" src="images/phase-3.svg" alt="Fase de entrevistas finales" />
                     </div>
                 </section>
 
                 <section class="swiper-slide" data-date="Jun - Ago">
                     <div class="slide-content">
-                        <span class="timeline-year">Fase 04</span>
+                        <span class="timeline-year">Fase 04 · Internship</span>
                         <h2 class="timeline-title">Junio - Agosto</h2>
-                        <p class="timeline-text">Internship activo: trabajo en proyectos reales, mentorías y networking dentro del equipo.</p>
+                        <p class="timeline-text"><strong>Periodo activo del internship.</strong> Los interns se integran a equipos de producto o ingeniería, desarrollan proyectos con alcance definido y participan en actividades internas como mentorías, presentaciones técnicas y <em>evaluaciones de cierre</em>.</p>
                         <img class="slide-svg" src="images/phase-4.svg" alt="Fase de internship" />
                     </div>
                 </section>
