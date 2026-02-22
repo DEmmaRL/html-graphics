@@ -41,20 +41,33 @@
             width: 600px;
             height: 600px;
             z-index: 1;
+            animation: graph-float 8s ease-in-out infinite;
         }
         .line {
             position: absolute;
             background: rgba(0,0,0,0.1);
             height: 2px;
-            transform-origin: left;
+            transform-origin: var(--line-origin, left);
+            transform: rotate(var(--line-rot)) scaleX(0);
+            animation: line-draw 1.2s ease-out both, line-pulse 8s ease-in-out infinite 1.2s;
         }
         .line-dotted {
             position: absolute;
-            border-top: 4px dotted #754D47;
-            height: 0;
-            transform-origin: left;
+            height: 4px;
+            transform-origin: var(--line-origin, left);
+            background-image: repeating-linear-gradient(
+                to right,
+                #754D47 0px,
+                #754D47 6px,
+                transparent 6px,
+                transparent 14px
+            );
+            background-size: 14px 4px;
+            background-position: 0 0;
             -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
             mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
+            transform: rotate(var(--line-rot)) scaleX(0);
+            animation: line-draw 1.4s ease-out both, dotted-flow 2.8s linear infinite 1.4s;
         }
         .node {
             position: absolute;
@@ -68,6 +81,8 @@
             justify-content: center;
             box-shadow: 0 12px 24px rgba(0,0,0,0.2), 0 6px 12px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1);
             z-index: 2;
+            transform: translateX(var(--node-x, 0)) translateY(0) scale(1);
+            animation: node-float 8s ease-in-out infinite;
         }
         .node img { width: 55px; filter: grayscale(0.4); opacity: 0.7; }
 
@@ -88,6 +103,7 @@
             overflow: visible;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             position: relative;
+            animation: profile-breathe 8s ease-in-out infinite;
         }
         .profile-bg {
             position: absolute;
@@ -105,12 +121,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translateY(-16px) scale(2) rotate(-0.6deg) translateX(1%);
+            transform: translateY(-16px) scale(2) rotate(-0.6deg) translateX(16px);
                 filter: grayscale(0.70)
                     drop-shadow(0 26px 32px rgba(0,0,0,0.35))
                     drop-shadow(0 8px 12px rgba(0,0,0,0.2));
             z-index: 2;
             pointer-events: none;
+            animation: portrait-drift 8s ease-in-out infinite;
         }
 
         /* Footer Sólido */
@@ -121,6 +138,61 @@
             padding-left: 20px;
             padding-right: 20px;
             z-index: 20;
+        }
+
+        .speaker-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        .speaker-badge::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.6) 45%, transparent 60%);
+            transform: translateX(-140%);
+            animation: badge-shine 3.6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes line-draw {
+            0% { transform: rotate(var(--line-rot)) scaleX(0); opacity: 0.2; }
+            100% { transform: rotate(var(--line-rot)) scaleX(1); opacity: 1; }
+        }
+        @keyframes line-pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        @keyframes dotted-flow {
+            0% { background-position: 0 0; opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { background-position: 28px 0; opacity: 0.6; }
+        }
+        @keyframes dotted-flow-reverse {
+            0% { background-position: 0 0; opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { background-position: -28px 0; opacity: 0.6; }
+        }
+        @keyframes node-float {
+            0%, 100% { transform: translateX(var(--node-x, 0)) translateY(0) scale(1); }
+            50% { transform: translateX(var(--node-x, 0)) translateY(-8px) scale(1.02); }
+        }
+        @keyframes profile-breathe {
+            0%, 100% { transform: scale(1); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+            50% { transform: scale(1.02); box-shadow: 0 26px 48px rgba(0,0,0,0.18); }
+        }
+        @keyframes portrait-drift {
+            0%, 100% { transform: translateY(-16px) scale(1.95) rotate(-0.6deg) translateX(1%); }
+            50% { transform: translateY(-20px) scale(1.98) rotate(-0.2deg) translateX(1%); }
+        }
+        @keyframes graph-float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-6px); }
+        }
+        @keyframes badge-shine {
+            0% { transform: translateX(-140%); opacity: 0; }
+            30% { opacity: 0.9; }
+            60% { transform: translateX(140%); opacity: 0; }
+            100% { transform: translateX(140%); opacity: 0; }
         }
     </style>
 </head>
@@ -141,36 +213,35 @@
                         La estrategia para entrar a las grandes ligas siendo estudiante
                     </p>
                 </div>
-                <div class="flex items-center justify-between ml-2 gap-6">
+                <div class="ml-2 mt-2 grid grid-cols-[auto,1fr] items-start gap-x-6 gap-y-2">
                     <p class="font-mono text-lg tracking-widest uppercase font-semibold" style="color: #754D47;">25 de Febrero | 1:00–3:00 PM</p>
-                    <p class="font-mono text-base tracking-widest uppercase font-semibold" style="color: black;">Auditorio Nikolai (Módulo Y)</p>
-                </div>
-                <div class="flex mt-4 ml-2">
-                    <p class="text-left font-mono text-base tracking-widest text-[#754D47] font-semibold uppercase">Cupos limitados</p>
+                    <p class="font-mono text-base tracking-widest uppercase font-semibold mr-1 text-right justify-self-end text-gray-700">Auditorio Antonio Alatorre</p>
+                    <p class="text-left font-mono text-base tracking-widest text-[#754D47] mt-1 font-semibold uppercase">Cupos limitados</p>
+                    <p class="font-mono text-base tracking-widest uppercase font-semibold text-right justify-self-end text-gray-700">(Módulo O)</p>
                 </div>
             </div>
         </div>
 
          <div class="graph-container">
-            <div class="line" style="width: 400px; top: 50%; left: 10%; transform: rotate(45deg);"></div>
-            <div class="line" style="width: 300px; top: 30%; left: 50%; transform: rotate(90deg);"></div>
-            <div class="line" style="width: 400px; top: 50%; left: 90%; transform: rotate(135deg);"></div>
+            <div class="line" style="width: 400px; top: 50%; left: 10%; --line-rot: 45deg;"></div>
+            <div class="line" style="width: 300px; top: 30%; left: 50%; --line-rot: 90deg; animation-delay: 0.15s;"></div>
+            <div class="line" style="width: 400px; top: 50%; left: 90%; --line-rot: 135deg; animation-delay: 0.3s;"></div>
 
-            <div class="line-dotted" style="width:200px; top: 60%; left: 15%; transform: rotate(45deg);"></div>
-            <div class="line-dotted" style="width: 140px; top: 40%; left: 51.9%; transform: rotate(90deg);"></div>
-            <div class="line-dotted" style="width: 200px; top: 60%; left: 85%; transform: rotate(135deg);"></div>
+            <div class="line-dotted" style="width:200px; top: 60%; left: 15%; --line-rot: 45deg;"></div>
+            <div class="line-dotted" style="width: 140px; top: 40%; left: 51.9%; --line-rot: 90deg;"></div>
+            <div class="line-dotted" style="width: 200px; top: 60%; left: 85%; --line-rot: 135deg;"></div>
 
-            <div class="node" style="top: 30%; left: 50%; transform: translateX(-50%);"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"></div>
-            <div class="node" style="top: 42%; left: 3%;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-icon.png" style="width: 60px;"></div>
-            <div class="node" style="top: 42%; right: 3%;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/amazon-icon.png"></div>
-            <div class="node" style="top: 90%; left: -18%;"><img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" style="width: 65px;"></div>
-            <div class="node" style="top: 90%; right: -18%;"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" style="width: 50px;"></div>
+            <div class="node" style="top: 30%; left: 50%; --node-x: -50%; animation-delay: 0.1s;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"></div>
+            <div class="node" style="top: 42%; left: 3%; animation-delay: 0.25s;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-icon.png" style="width: 60px;"></div>
+            <div class="node" style="top: 42%; right: 3%; animation-delay: 0.4s;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/amazon-icon.png"></div>
+            <div class="node" style="top: 90%; left: -18%; animation-delay: 0.55s;"><img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" style="width: 65px;"></div>
+            <div class="node" style="top: 90%; right: -18%; animation-delay: 0.7s;"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" style="width: 50px;"></div>
             
-            <div class="line" style="width: 200px; top: 99%; left: -2%; transform: rotate(0deg);"></div>
-            <div class="line" style="width: 200px; top: 99%; right: -2%; transform: rotate(0deg);"></div>
+            <div class="line" style="width: 200px; top: 99%; left: -2%; --line-rot: 0deg;"></div>
+            <div class="line" style="width: 200px; top: 99%; right: -2%; --line-rot: 0deg; --line-origin: right;"></div>
 
-            <div class="line-dotted" style="width: 206px; top: 100.99%; left: -1.5%; transform: rotate(0deg);"></div>
-            <div class="line-dotted" style="width: 206px; top: 100.99%; right: -1.5%; transform: rotate(0deg);"></div>
+            <div class="line-dotted" style="width: 206px; top: 100.99%; left: -1.5%; --line-rot: 0deg;"></div>
+            <div class="line-dotted" style="width: 206px; top: 100.99%; right: -1.5%; --line-rot: 0deg; --line-origin: right; background-image: repeating-linear-gradient(to left, #754D47 0px, #754D47 6px, transparent 6px, transparent 14px);"></div>
         </div>
 
         <div class="profile-wrapper">
@@ -182,16 +253,16 @@
         </div>
 
         <div style="position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%; overflow: hidden; z-index: 30; pointer-events: none;">
-            <div style="position: absolute; bottom: 110px; left: 0; right: 0; padding: 12px 0; background: #ddd; text-align: center; pointer-events: auto; border-left: 8px solid var(--beige); border-right: 8px solid var(--beige);">
+            <div class="speaker-badge" style="position: absolute; bottom: 110px; left: 0; right: 0; padding: 12px 0; background: #ddd; text-align: center; pointer-events: auto; border-left: 8px solid var(--beige); border-right: 8px solid var(--beige);">
                 <p class="font-mono text-xs tracking-widest uppercase text-gray-500">Speaker</p>
                 <p class="font-bold text-xl tracking-tight" style="color: #754D47;">Diego Rivera</p>
             </div>
         </div>
 
         <div class="footer-banner">
-            <div class="flex justify-between items-end gap-8 px-6 py-6 opacity-50">
+            <div class="flex justify-between items-end gap-8 px-6 py-6 opacity-90">
                 <img src="images/footer/accionU.png" class="h-28">
-                <img src="images/footer/consejo.png" class="h-28">
+                <img src="images/footer/consejo.png" class="h-20 mb-5">
                 <img src="images/footer/accionU.png" class="h-28">
             </div>
         </div>
