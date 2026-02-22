@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Internships</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --charcoal-blue: #31394d;
+            --white: #ffffff;
+            --pale-oak: #d9c4b1;
+            --rosy-copper: #b85741;
+            --deep-space-blue: #002f4a;
+            --bg: var(--deep-space-blue);
+            --surface: var(--charcoal-blue);
+            --surface-2: var(--deep-space-blue);
+            --text: var(--white);
+            --muted: var(--pale-oak);
+            --accent: var(--rosy-copper);
+            --line: rgba(217, 196, 177, 0.35);
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: var(--bg);
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            color: var(--text);
+        }
+
+        .timeline {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper-slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, rgba(0, 47, 74, 0.88) 0%, rgba(0, 47, 74, 0.62) 45%, rgba(0, 47, 74, 0.28) 100%);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: grid;
+            align-content: center;
+            gap: 14px;
+            max-width: 720px;
+            padding: 72px 80px;
+        }
+
+        .timeline-year {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .timeline-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.05;
+            font-weight: 700;
+        }
+
+        .timeline-text {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 64ch;
+        }
+
+        .slide-svg {
+            width: clamp(200px, 24vw, 340px);
+            height: auto;
+            margin-top: 8px;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.25));
+        }
+
+        .timeline-dates {
+            position: absolute;
+            right: 56px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-left: 26px;
+        }
+
+        .timeline-dates::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: var(--line);
+        }
+
+        .timeline-dates button {
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            text-align: left;
+            font-size: 0.95rem;
+            cursor: pointer;
+            position: relative;
+            transition: color .2s ease;
+            padding: 0;
+        }
+
+        .timeline-dates button::before {
+            content: "";
+            position: absolute;
+            left: -22px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--line);
+        }
+
+        .timeline-dates button.active {
+            color: var(--accent);
+            font-weight: 600;
+            background: rgba(184, 87, 65, 0.12);
+        }
+
+        .timeline-dates button.active::before {
+            background: var(--accent);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(49, 57, 77, 0.78);
+            color: var(--text);
+            top: 32px;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .swiper-button-prev {
+            left: auto;
+            right: 96px;
+        }
+
+        .swiper-button-next {
+            right: 44px;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 960px) {
+            .slide-content {
+                padding: 90px 24px 28px;
+                text-align: center;
+                justify-items: center;
+            }
+
+            .timeline-dates {
+                top: auto;
+                bottom: 20px;
+                left: 16px;
+                right: 16px;
+                transform: none;
+                flex-direction: row;
+                overflow: auto;
+                gap: 10px;
+                padding: 0;
+            }
+
+            .timeline-dates::before {
+                display: none;
+            }
+
+            .timeline-dates button {
+                white-space: nowrap;
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                padding: 7px 12px;
+                background: rgba(49, 57, 77, 0.56);
+            }
+
+            .timeline-dates button::before {
+                display: none;
+            }
+
+            .swiper-button-prev {
+                right: 74px;
+            }
+
+            .swiper-button-next {
+                right: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline">
+        <div class="swiper timeline-swiper">
+            <div class="swiper-wrapper">
+                <section class="swiper-slide" data-date="Ago - Sep">
+                    <div class="slide-content">
+                        <span class="timeline-year">Fase 01</span>
+                        <h2 class="timeline-title">Agosto - Septiembre</h2>
+                        <p class="timeline-text">Abre la temporada de internships. Se envían aplicaciones masivas a empresas como Google, Microsoft, Amazon y startups.</p>
+                        <img class="slide-svg" src="images/phase-1.svg" alt="Fase de aplicaciones" />
+                    </div>
+                </section>
+
+                <section class="swiper-slide" data-date="Oct - Nov">
+                    <div class="slide-content">
+                        <span class="timeline-year">Fase 02</span>
+                        <h2 class="timeline-title">Octubre - Noviembre</h2>
+                        <p class="timeline-text">Llegan los Online Assessments (OA), desafíos de código y primeras rondas técnicas o de recruiter screen.</p>
+                        <img class="slide-svg" src="images/phase-2.svg" alt="Fase de evaluaciones" />
+                    </div>
+                </section>
+
+                <section class="swiper-slide" data-date="Ene - Feb">
+                    <div class="slide-content">
+                        <span class="timeline-year">Fase 03</span>
+                        <h2 class="timeline-title">Enero - Febrero</h2>
+                        <p class="timeline-text">Segunda ola de procesos. Entrevistas finales, decisiones de oferta y preparación logística para verano.</p>
+                        <img class="slide-svg" src="images/phase-3.svg" alt="Fase de entrevistas finales" />
+                    </div>
+                </section>
+
+                <section class="swiper-slide" data-date="Jun - Ago">
+                    <div class="slide-content">
+                        <span class="timeline-year">Fase 04</span>
+                        <h2 class="timeline-title">Junio - Agosto</h2>
+                        <p class="timeline-text">Internship activo: trabajo en proyectos reales, mentorías y networking dentro del equipo.</p>
+                        <img class="slide-svg" src="images/phase-4.svg" alt="Fase de internship" />
+                    </div>
+                </section>
+            </div>
+
+            <div class="swiper-button-prev" aria-label="Anterior"></div>
+            <div class="swiper-button-next" aria-label="Siguiente"></div>
+        </div>
+
+        <div class="timeline-dates" id="timelineDates"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const slides = Array.from(document.querySelectorAll('.timeline-swiper .swiper-slide'));
+        const timelineDates = document.getElementById('timelineDates');
+
+        const buttons = slides.map((slide, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = slide.dataset.date;
+            button.addEventListener('click', () => swiper.slideTo(index));
+            timelineDates.appendChild(button);
+            return button;
+        });
+
+        const swiper = new Swiper('.timeline-swiper', {
+            direction: 'vertical',
+            speed: 900,
+            mousewheel: true,
+            keyboard: { enabled: true },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+                0: { direction: 'horizontal' },
+                961: { direction: 'vertical' }
+            },
+            on: {
+                init(swiperInstance) {
+                    buttons.forEach((button, index) => button.classList.toggle('active', index === swiperInstance.activeIndex));
+                },
+                slideChange(swiperInstance) {
+                    buttons.forEach((button, index) => button.classList.toggle('active', index === swiperInstance.activeIndex));
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
