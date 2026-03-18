@@ -15,27 +15,33 @@
   src: url('fonts/DepartureMono-Regular.woff2') format('woff2');
   font-weight: 400;
 }
-</style>
-<style>
 :root {
   --green: #05C770;
   --black: #141419;
   --terrain: #003333;
   --sky: #73D3FB;
-  --white: #FFFFFF;
 }
 body {
   background: #0e0e12;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   margin: 0;
+  padding: 40px 0;
   font-family: 'Satoshi', sans-serif;
 }
+/* Canvas real: 1080x1920, escalado al 56% para pantalla */
+.flyer-wrap {
+  width: 1080px;
+  height: 1920px;
+  transform: scale(0.56);
+  transform-origin: top center;
+  margin-bottom: calc(-1920px * 0.44);
+}
 .flyer {
-  width: 864px;
-  height: 1080px;
+  width: 1080px;
+  height: 1920px;
   background: var(--black);
   position: relative;
   overflow: hidden;
@@ -48,16 +54,16 @@ body {
   background-image:
     linear-gradient(rgba(5,199,112,0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(5,199,112,0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: 60px 60px;
   z-index: 0;
 }
 .glow {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(5,199,112,0.18) 0%, transparent 70%);
-  top: 30%;
+  background: radial-gradient(circle, rgba(5,199,112,0.15) 0%, transparent 70%);
+  top: 35%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 0;
@@ -69,122 +75,103 @@ body {
 }
 .tag {
   font-family: 'Departure Mono', monospace;
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--green);
-}
-.profile-ring {
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
-  border: 2px solid rgba(5,199,112,0.4);
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 0 60px rgba(5,199,112,0.2);
-}
-.profile-ring img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(0.3);
 }
 .badge {
   background: var(--green);
   color: var(--black);
   font-family: 'Departure Mono', monospace;
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 4px 12px;
+  padding: 6px 18px;
   border-radius: 2px;
   font-weight: 700;
 }
 .divider {
-  width: 40px;
-  height: 2px;
+  width: 56px;
+  height: 3px;
   background: var(--green);
 }
 </style>
 </head>
 <body>
+<div class="flyer-wrap">
 <div class="flyer">
   <div class="grid-bg"></div>
   <div class="glow"></div>
 
-  <!-- Header: logo + community -->
-  <div class="relative z-10 flex items-center gap-3 px-10 pt-10">
-    <img src="../hackerrank/logos/Logo Light Wide.svg" style="height:32px;">
-    <span style="color:rgba(255,255,255,0.3); font-size:20px; font-weight:300;">|</span>
-    <span class="tag" style="font-size:30px; letter-spacing:0.15em;">Crew GDL</span>
+  <!-- Header -->
+  <div class="relative z-10 flex items-center gap-4 px-14 pt-16">
+    <img src="../hackerrank/logos/Logo Light Wide.svg" style="height:42px;">
+    <span style="color:rgba(255,255,255,0.25); font-size:28px; font-weight:300;">|</span>
+    <span class="tag" style="font-size:20px; letter-spacing:0.2em; color:rgba(255,255,255,0.7);">Crew GDL</span>
   </div>
 
-  <!-- Eyebrow + Title + Date blocks en la misma fila -->
-  <div class="relative z-10 flex items-start mt-10" style="gap:0;">
+  <!-- Eyebrow + Title + Fecha -->
+  <div class="relative z-10 flex items-start mt-16" style="gap:0;">
 
-    <!-- Contenido izquierdo -->
-    <div class="flex-1 px-10">
+    <!-- Izquierda -->
+    <div class="flex-1 px-14">
       <span class="tag">> Skills over pedigree</span>
-      <h1 class="font-bold leading-none text-white mt-6" style="font-size:64px; line-height:1.05;">
+      <h1 class="font-bold text-white mt-8" style="font-size:96px; line-height:1.05;">
         Cómo construir<br>un Resume de<br><span style="color:var(--green);">clase mundial</span>
       </h1>
-      <div class="mt-5">
-        <div class="divider mb-4"></div>
-        <p class="text-gray-400" style="max-width:400px; font-size:18px; line-height:1.6;">
+      <div class="mt-8">
+        <div class="divider mb-6"></div>
+        <p class="text-gray-400" style="max-width:560px; font-size:26px; line-height:1.6;">
           La guía práctica para que tu CV hable por ti antes de la primera entrevista.
         </p>
       </div>
     </div>
 
-    <!-- Bloques de fecha + lugar -->
-    <div class="flex flex-col" style="gap:12px; padding-top:24px; align-self:flex-start; align-items:flex-end; width:160px; margin-right:40px;">
-      <div style="width:120px; height:120px; border:1px solid rgba(5,199,112,0.3); display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:64px; line-height:1; color:#fff;">25</span>
+    <!-- Bloques fecha -->
+    <div class="flex flex-col" style="gap:16px; padding-top:36px; align-items:flex-end; width:220px; margin-right:56px;">
+      <div style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#fff;">25</span>
         <span class="tag" style="font-size:20px; color:rgba(255,255,255,0.8); margin-top:4px;">Marzo</span>
       </div>
-      <div style="width:120px; height:120px; border:1px solid rgba(5,199,112,0.3); background:var(--green); display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:64px; line-height:1; color:#141419;">03</span>
-        <span style="font-family:'Departure Mono',monospace; font-size:20px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(20,20,25,0.6); margin-top:4px;">PM</span>
+      <div style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); background:var(--green); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#141419;">03</span>
+        <span style="font-family:'Departure Mono',monospace; font-size:20px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(20,20,25,0.55); margin-top:4px;">PM</span>
       </div>
-      <div class="flex flex-col items-end" style="gap:3px; padding-top:4px;">
-        <span class="tag" style="font-size:13px; color:rgba(255,255,255,0.55); text-align:right;">Auditorio Antonio Alatorre</span>
-        <span class="tag" style="font-size:13px; color:rgba(255,255,255,0.35); text-align:right;">Módulo O</span>
+      <div class="flex flex-col items-end" style="gap:6px; padding-top:8px;">
+        <span class="tag" style="font-size:16px; color:rgba(255,255,255,0.55); text-align:right;">Auditorio Antonio Alatorre</span>
+        <span class="tag" style="font-size:16px; color:rgba(255,255,255,0.35); text-align:right;">Módulo O · CUCEI</span>
       </div>
     </div>
 
   </div>
 
-
-
-  <!-- Speaker + photo -->
-  <div class="relative z-10 flex items-end px-10 mt-auto mb-12 ml-20" style="gap:40px;">
-
-    <!-- Foto con overflow effect -->
-    <div style="position:relative; width:300px; height:340px; flex-shrink:0;">
-     
-      <!-- Círculo base 01-->
-      <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:256px; height:256px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 60px rgba(5,199,112,0.2);"></div>
-      <!-- Círculo base 02-->
-      <div style="position:absolute; bottom:35%; left:130%; transform:translateX(-50%); width:200px; height:200px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 60px rgba(5,199,112,0.2);"></div>
-      <!-- Figura que desborda -->
-      <img src="../bigTech/images/oracle-cut.png" style="position:absolute; bottom:0; left:50%; transform:translateX(-4%) translateY(-20%) scale(1.8); height:340px; object-fit:contain; filter:drop-shadow(0 -8px 24px rgba(0,0,0,0.5)); -webkit-mask-image:linear-gradient(to bottom, black 65%, transparent 100%); mask-image:linear-gradient(to bottom, black 78%, transparent 90%);">
-    </div>
-
-    <div class="ml-2" style="position:absolute; left:300px; bottom:60px;">
-      <span class="ml-40 badge text-sm mb-3 inline-block">Speaker</span>
-      <p class="ml-36 text-white font-bold text-4xl mt-2">Diego Rivera</p>
-      <p class="ml-40 tag mt-2 text-sm" style="color:#73D3FB;">Fullstack Engineer</p>
-    </div>
-    
-  </div>
-
-  <!-- Footer bar: logos institucionales -->
-  <div class="relative z-10 py-2" style="background:rgba(255,255,255,0.04);">
-    <div style="padding:16px 0; overflow:hidden;">
-      <img src="../div-tic/DIVTIC - BLANCO.png" style="height:56px; opacity:0.95; display:block; margin:0 auto;">
+  <!-- Speaker -->
+  <div class="relative z-10 mt-auto px-14" style="margin-bottom:0;">
+    <div style="position:relative; height:680px;">
+      <!-- Círculo base -->
+      <div style="position:absolute; bottom:0; left:120px; width:420px; height:420px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 80px rgba(5,199,112,0.2);"></div>
+      <!-- Círculo secundario -->
+      <div style="position:absolute; bottom:30%; left:480px; width:280px; height:280px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.3); box-shadow:0 0 60px rgba(5,199,112,0.15);"></div>
+      <!-- Figura -->
+      <img src="../bigTech/images/oracle-cut.png" style="position:absolute; bottom:0; left:60px; height:660px; object-fit:contain; filter:drop-shadow(0 -8px 32px rgba(0,0,0,0.5)); -webkit-mask-image:linear-gradient(to bottom, black 70%, transparent 95%); mask-image:linear-gradient(to bottom, black 70%, transparent 95%);">
+      <!-- Info speaker -->
+      <div style="position:absolute; bottom:80px; left:480px;">
+        <span class="badge mb-4 inline-block">Speaker</span>
+        <p class="text-white font-bold mt-3" style="font-size:52px; line-height:1.1;">Diego Rivera</p>
+        <p class="tag mt-2" style="color:var(--sky); font-size:20px;">Fullstack Engineer</p>
+      </div>
     </div>
   </div>
 
+  <!-- Footer -->
+  <div class="relative z-10" style="background:rgba(255,255,255,0.04); border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="padding:24px 0;">
+      <img src="../div-tic/DIVTIC - BLANCO.png" style="height:72px; opacity:0.9; display:block; margin:0 auto;">
+    </div>
+  </div>
+
+</div>
 </div>
 </body>
 </html>
