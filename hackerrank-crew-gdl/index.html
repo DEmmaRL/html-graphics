@@ -154,23 +154,33 @@ body {
 
   <!-- Speaker + photo -->
   <div class="relative z-10 flex items-end px-10 mt-auto mb-0" style="gap:40px;">
-    <div class="profile-ring">
-      <img src="../bigTech/images/diegoGoogle.jpeg">
+
+    <!-- Foto con overflow effect -->
+    <div style="position:relative; width:300px; height:340px; flex-shrink:0;">
+      <!-- Círculo base 01-->
+      <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:260px; height:260px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 60px rgba(5,199,112,0.2);"></div>
+      <!-- Círculo base 02-->
+      <div style="position:absolute; bottom:35%; left:130%; transform:translateX(-50%); width:200px; height:200px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 60px rgba(5,199,112,0.2);"></div>
+      <!-- Figura que desborda -->
+      <img src="../bigTech/images/oracle-cut.png" style="position:absolute; bottom:0; left:50%; transform:translateX(-4%) translateY(-20%) scale(1.8); height:340px; object-fit:contain; filter:drop-shadow(0 -8px 24px rgba(0,0,0,0.5));">
     </div>
-    <div class="pb-6">
-      <span class="badge mb-3 inline-block">Speaker</span>
-      <p class="text-white font-bold text-3xl mt-2">Diego Rivera</p>
-      <p class="tag mt-1" style="color:#73D3FB;">Fullstack Engineer</p>
+
+    <div class="pb-6 ml-24">
+      <span class="badge text-sm mb-3 inline-block">Speaker</span>
+      <p class="text-white font-bold text-4xl mt-2">Diego Rivera</p>
+      <p class="tag mt-1 text-sm" style="color:#73D3FB;">Fullstack Engineer</p>
+          <div class="flex mt-3 gap-2 items-center">
+            <span class="tag text-sm" style="color:rgba(255,255,255,0.6);">Auditorio Antonio Alatorre</span>
+            <span class="tag text-sm" style="color:rgba(255,255,255,0.3);">·</span>
+            <span class="tag text-sm" style="color:rgba(255,255,255,0.6);">Módulo O, CUCEI</span>
+          </div>
     </div>
+    
   </div>
 
   <!-- Fecha / lugar — justo arriba del footer -->
   <div class="relative z-10 px-10 mt-auto mb-0 flex items-center justify-between" style="padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.08);">
-    <div class="flex gap-2 items-center">
-      <span class="tag" style="color:rgba(255,255,255,0.6);">Auditorio Antonio Alatorre</span>
-      <span class="tag" style="color:rgba(255,255,255,0.3);">·</span>
-      <span class="tag" style="color:rgba(255,255,255,0.6);">Módulo O, CUCEI</span>
-    </div>
+
   </div>
 
   <!-- Footer bar: logos institucionales -->
