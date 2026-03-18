@@ -59,15 +59,16 @@ body {
 }
 .glow {
   position: absolute;
-  width: 700px;
-  height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(5,199,112,0.15) 0%, transparent 70%);
-  top: 35%;
+  width: 1400px;
+  height: 1400px;
+  border-radius: 10%;
+  background: radial-gradient(circle, rgba(5,199,112,0.45) 0%, rgba(5,199,112,0.18) 40%, transparent 70%);
+  top: 18%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-50%);
   z-index: 0;
   animation: pulse 6s ease-in-out infinite;
+  filter: blur(80px);
 }
 @keyframes pulse {
   0%,100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
