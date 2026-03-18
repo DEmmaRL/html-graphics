@@ -80,14 +80,6 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-.typewriter-line {
-  display: inline;
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 0;
-  vertical-align: baseline;
-  animation: type-in 1.8s steps(22, end) 0.5s forwards;
-}
 .cursor {
   display: inline-block;
   width: 14px;
@@ -97,9 +89,26 @@ body {
   margin-left: 3px;
   animation: cursor-blink 0.8s step-end infinite;
 }
-@keyframes type-in {
-  from { max-width: 0; }
-  to   { max-width: 22ch; }
+.typewriter-wrap {
+  display: inline-block;
+  perspective: 400px;
+}
+.typewriter-inner {
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.typewriter-inner.flip {
+  transform: rotateX(-90deg);
+}
+@keyframes flip-in {
+  from { transform: rotateX(90deg); opacity: 0; }
+  to   { transform: rotateX(0deg);  opacity: 1; }
+}
+.success-text {
+  display: none;
+  color: var(--green);
+  animation: flip-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .tag {
   font-family: 'Departure Mono', monospace;
@@ -144,7 +153,7 @@ body {
 
     <!-- Izquierda -->
     <div class="flex-1 px-14">
-      <span class="tag">&gt; <span id="typewriter"></span><span class="cursor"></span></span>
+      <span class="tag">&gt; <span class="typewriter-wrap"><span class="typewriter-inner"><span id="typewriter"></span></span><span id="success-text" class="success-text">SUCCESS!</span></span><span class="cursor"></span></span>
       <h1 class="font-bold text-white mt-8" style="font-size:96px; line-height:1.05;">
         Cómo construir<br>un Resume de<br><span style="color:var(--green);">clase mundial</span>
       </h1>
@@ -205,11 +214,25 @@ body {
 <script>
   const text = "Skills over pedigree";
   const el = document.getElementById("typewriter");
+  const inner = el.closest('.typewriter-inner');
+  const successEl = document.getElementById("success-text");
   let i = 0;
+
   setTimeout(() => {
     const interval = setInterval(() => {
       el.textContent += text[i++];
-      if (i >= text.length) clearInterval(interval);
+      if (i >= text.length) {
+        clearInterval(interval);
+        setTimeout(() => {
+          // Flip hacia atrás
+          inner.classList.add("flip");
+          setTimeout(() => {
+            // Swap contenido y flip hacia adelante
+            inner.style.display = "none";
+            successEl.style.display = "inline";
+          }, 500);
+        }, 2000);
+      }
     }, 80);
   }, 600);
 </script>
