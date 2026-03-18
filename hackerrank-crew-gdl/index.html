@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <title>init commit — HackerRank Crew GDL</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&f[]=departure-mono@400&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Satoshi';
+  src: url('fonts/Satoshi-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+}
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('fonts/DepartureMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+</style>
 <style>
 :root {
   --green: #05C770;
@@ -102,9 +113,10 @@ body {
   <div class="glow"></div>
 
   <!-- Header: logo + community -->
-  <div class="relative z-10 flex items-center justify-between px-10 pt-10">
-    <img src="../hackerrank/logos/Logo Light Wide.svg" style="height:28px;">
-    <span class="tag">Crew GDL</span>
+  <div class="relative z-10 flex items-center gap-3 px-10 pt-10">
+    <img src="../hackerrank/logos/Logo Light Wide.svg" style="height:32px;">
+    <span style="color:rgba(255,255,255,0.3); font-size:20px; font-weight:300;">|</span>
+    <span class="tag" style="font-size:15px; letter-spacing:0.15em;">Crew GDL</span>
   </div>
 
   <!-- Eyebrow -->
@@ -143,12 +155,11 @@ body {
   <div class="relative z-10 mt-auto" style="background:rgba(5,199,112,0.08); border-top:1px solid rgba(5,199,112,0.2);">
     <div class="flex items-center justify-between px-10 py-5">
       <div>
-        <p class="tag" style="color:var(--green);">Fecha por confirmar</p>
-        <p class="text-white font-bold text-lg mt-1">Guadalajara, Jalisco</p>
+        <p class="tag" style="color:var(--green);">Miércoles 25 de Marzo · 3:00–5:00 PM</p>
+        <p class="text-white font-bold text-lg mt-1">Auditorio Antonio Alatorre · Módulo O, CUCEI</p>
       </div>
       <div class="text-right">
         <p class="tag" style="color:var(--green);">Cupos limitados</p>
-        <p class="text-white font-bold text-lg mt-1">Registro gratuito</p>
       </div>
     </div>
   </div>
