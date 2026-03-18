@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>init commit — HackerRank Crew GDL</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&f[]=departure-mono@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #05C770;
+  --black: #141419;
+  --terrain: #003333;
+  --sky: #73D3FB;
+  --white: #FFFFFF;
+}
+body {
+  background: #0e0e12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Satoshi', sans-serif;
+}
+.flyer {
+  width: 864px;
+  height: 1080px;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(5,199,112,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(5,199,112,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: 0;
+}
+.glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(5,199,112,0.18) 0%, transparent 70%);
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  animation: pulse 6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+}
+.tag {
+  font-family: 'Departure Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.profile-ring {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 2px solid rgba(5,199,112,0.4);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 60px rgba(5,199,112,0.2);
+}
+.profile-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.3);
+}
+.badge {
+  background: var(--green);
+  color: var(--black);
+  font-family: 'Departure Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+.divider {
+  width: 40px;
+  height: 2px;
+  background: var(--green);
+}
+</style>
+</head>
+<body>
+<div class="flyer">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+
+  <!-- Header: logo + community -->
+  <div class="relative z-10 flex items-center justify-between px-10 pt-10">
+    <img src="../hackerrank/logos/Logo Light Wide.svg" style="height:28px;">
+    <span class="tag">Crew GDL</span>
+  </div>
+
+  <!-- Eyebrow -->
+  <div class="relative z-10 px-10 mt-10">
+    <span class="tag">// init commit · evento #001</span>
+  </div>
+
+  <!-- Title -->
+  <div class="relative z-10 px-10 mt-6">
+    <h1 class="font-bold leading-none text-white" style="font-size:64px; line-height:1.05;">
+      Cómo construir<br>un Resume de<br><span style="color:var(--green);">clase mundial</span>
+    </h1>
+  </div>
+
+  <!-- Subtitle -->
+  <div class="relative z-10 px-10 mt-5">
+    <div class="divider mb-4"></div>
+    <p class="text-gray-400 text-lg" style="max-width:480px; font-size:18px; line-height:1.6;">
+      La guía práctica para que tu CV hable por ti antes de la primera entrevista.
+    </p>
+  </div>
+
+  <!-- Speaker + photo -->
+  <div class="relative z-10 flex items-end px-10 mt-auto mb-0" style="gap:40px;">
+    <div class="profile-ring">
+      <img src="../bigTech/images/diegoGoogle.jpeg">
+    </div>
+    <div class="pb-6">
+      <span class="badge mb-3 inline-block">Speaker</span>
+      <p class="text-white font-bold text-3xl mt-2">Diego Rivera</p>
+      <p class="tag mt-1" style="color:#73D3FB;">Software Engineer</p>
+    </div>
+  </div>
+
+  <!-- Footer bar -->
+  <div class="relative z-10 mt-auto" style="background:rgba(5,199,112,0.08); border-top:1px solid rgba(5,199,112,0.2);">
+    <div class="flex items-center justify-between px-10 py-5">
+      <div>
+        <p class="tag" style="color:var(--green);">Fecha por confirmar</p>
+        <p class="text-white font-bold text-lg mt-1">Guadalajara, Jalisco</p>
+      </div>
+      <div class="text-right">
+        <p class="tag" style="color:var(--green);">Cupos limitados</p>
+        <p class="text-white font-bold text-lg mt-1">Registro gratuito</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
