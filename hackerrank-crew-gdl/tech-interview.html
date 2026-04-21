@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Entiende las entrevistas técnicas — HackerRank Crew GDL</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@font-face {
+  font-family: 'Satoshi';
+  src: url('fonts/Satoshi-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+}
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('fonts/DepartureMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+:root {
+  --green: #05C770;
+  --black: #141419;
+  --terrain: #003333;
+  --sky: #73D3FB;
+}
+body {
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 0;
+  font-family: 'Satoshi', sans-serif;
+  zoom: 0.72;
+}
+.flyer-wrap {
+  width: 1080px;
+  height: 1350px;
+}
+.flyer {
+  width: 1080px;
+  height: 1350px;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(5,199,112,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(5,199,112,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+}
+.glow {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  border-radius: 10%;
+  background: radial-gradient(circle, rgba(5,199,112,0.45) 0%, rgba(5,199,112,0.18) 40%, transparent 70%);
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 0;
+  animation: pulse 9s ease-in-out infinite;
+  filter: blur(80px);
+}
+@keyframes pulse {
+  0%   { opacity: 0.6; transform: translateX(-50%) scale(0.98); }
+  15%  { opacity: 0.9; transform: translateX(-50%) scale(1.04); }
+  30%  { opacity: 0.7; transform: translateX(-50%) scale(1.01); }
+  47%  { opacity: 1;   transform: translateX(-50%) scale(1.08); }
+  60%  { opacity: 0.75;transform: translateX(-50%) scale(1.02); }
+  78%  { opacity: 0.95;transform: translateX(-50%) scale(1.06); }
+  100% { opacity: 0.6; transform: translateX(-50%) scale(0.98); }
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor {
+  display: inline-block;
+  width: 14px;
+  height: 0.85em;
+  background: var(--green);
+  vertical-align: middle;
+  margin-left: 3px;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+.typewriter-wrap {
+  display: inline-block;
+  perspective: 400px;
+}
+.typewriter-inner {
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.typewriter-inner.flip {
+  transform: rotateX(-90deg);
+}
+@keyframes flip-in {
+  from { transform: rotateX(90deg); opacity: 0; }
+  to   { transform: rotateX(0deg);  opacity: 1; }
+}
+.success-text {
+  display: none;
+  color: var(--green);
+  animation: flip-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.tag {
+  font-family: 'Departure Mono', monospace;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.badge {
+  background: var(--green);
+  color: var(--black);
+  font-family: 'Departure Mono', monospace;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+.divider {
+  width: 56px;
+  height: 3px;
+  background: var(--green);
+}
+</style>
+</head>
+<body>
+<div class="flyer-wrap">
+<div class="flyer">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+
+  <!-- Header -->
+  <div class="relative z-10 flex items-center gap-4 px-14 pt-10">
+    <img src="../hackerrank/logos/Logo Light Wide.svg" style="height:36px;">
+    <span style="color:rgba(255,255,255,0.25); font-size:24px; font-weight:300;">|</span>
+    <span class="tag" style="font-size:28px; letter-spacing:0.2em; color:rgba(255,255,255,0.7);">Crew GDL</span>
+  </div>
+
+  <!-- Eyebrow + Title + Fecha -->
+  <div class="relative z-10 flex items-start mt-10" style="gap:0;">
+
+    <!-- Izquierda -->
+    <div class="flex-1 px-14">
+      <span class="tag">&gt; <span class="typewriter-wrap"><span class="typewriter-inner"><span id="typewriter"></span></span><span id="success-text" class="success-text">SUCCESS!</span></span><span class="cursor"></span></span>
+      <h1 class="font-bold text-white mt-6" style="font-size:80px; line-height:1.05;">
+        Entiende las<br>entrevistas<br><span style="color:var(--green);">técnicas</span>
+      </h1>
+      <div class="mt-5">
+        <div class="divider mb-4"></div>
+        <p class="text-gray-400" style="max-width:500px; font-size:22px; line-height:1.6;">
+          Metodologías, preparación y psicología para dominar tu próxima entrevista.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bloques fecha -->
+    <div class="flex flex-col" style="gap:12px; padding-top:0px; align-items:flex-end; width:240px; margin-right:48px;">
+      <div style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#fff;">22</span>
+        <span class="tag" style="font-size:18px; color:rgba(255,255,255,0.8); margin-top:4px;">Abril</span>
+      </div>
+      <div style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); background:var(--green); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#141419;">03</span>
+        <span style="font-family:'Departure Mono',monospace; font-size:18px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(20,20,25,0.55); margin-top:4px;">PM</span>
+      </div>
+      <div class="flex flex-col items-end" style="gap:4px; padding-top:4px;">
+        <span class="tag" style="font-size:16px; color:rgba(255,255,255,0.55); text-align:right;">Auditorio Antonio Alatorre</span>
+        <span class="tag" style="font-size:16px; color:rgba(255,255,255,0.35); text-align:right;">Módulo O · CUCEI</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Speaker -->
+  <div class="relative z-10 mt-auto mb-20 px-14">
+    <div style="position:relative; height:500px;">
+      <div style="position:absolute; bottom:0; left:45%; transform:translateX(-80%); width:320px; height:320px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 80px rgba(5,199,112,0.2);"></div>
+     
+      <div style="position:absolute; bottom:35%; left:52%; width:220px; height:220px; border-radius:50%; background:#003333; border:2px solid rgba(5,199,112,0.3); box-shadow:0 0 60px rgba(5,199,112,0.15);"></div>
+     
+      <img src="../bigTech/images/oracle-cut.png" style="position:absolute; bottom:-80px; left:50%; transform:translateX(-50%); height:700px; object-fit:contain; filter:drop-shadow(0 -8px 32px rgba(0,0,0,0.5)); -webkit-mask-image:linear-gradient(to bottom, black 70%, transparent 95%); mask-image:linear-gradient(to bottom, black 70%, transparent 90%);">
+      <div style="position:absolute; bottom:100px; left:63%;">
+        <span class="badge ml-8 mb-3 inline-block text-xl">Speaker</span>
+        <p class="ml-10 text-white font-bold mt-2" style="font-size:48px; line-height:1.1;">Diego Rivera</p>
+        <p class="ml-12 tag mt-2" style="color:var(--sky); font-size:20px;">Fullstack Engineer</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="relative z-10" style="background:rgba(255,255,255,0.04); border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="padding:24px 0;">
+      <img src="../div-tic/DIVTIC - BLANCO.png" style="height:80px; opacity:0.9; display:block; margin:0 auto;">
+    </div>
+  </div>
+
+</div>
+</div>
+</body>
+<script>
+  const text = "Think before you code";
+  const el = document.getElementById("typewriter");
+  const inner = el.closest('.typewriter-inner');
+  const successEl = document.getElementById("success-text");
+  let i = 0;
+
+  setTimeout(() => {
+    const interval = setInterval(() => {
+      el.textContent += text[i++];
+      if (i >= text.length) {
+        clearInterval(interval);
+        setTimeout(() => {
+          // Flip hacia atrás
+          inner.classList.add("flip");
+          setTimeout(() => {
+            // Swap contenido y flip hacia adelante
+            inner.style.display = "none";
+            successEl.style.display = "inline";
+          }, 500);
+        }, 2000);
+      }
+    }, 80);
+  }, 600);
+</script>
+</html>
