@@ -23,7 +23,7 @@
   --hex-opacity: 0.18;
 }
 body {
-  background: #ffffff;
+  background: var(--black);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -172,13 +172,16 @@ body {
     <!-- Bloques fecha -->
     <div class="flex flex-col" style="gap:12px; padding-top:0px; align-items:flex-end; width:240px; margin-right:48px;">
       <div style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <span class="tag" style="font-size:15px; color:rgba(255,255,255,0.5); text-align:center; line-height:1.4;">Por<br>definir</span>
+        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#fff;">05</span>
+        <span class="tag" style="font-size:18px; color:rgba(255,255,255,0.8); margin-top:4px;">mayo</span>
       </div>
       <div style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); background:var(--green); display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <span style="font-family:'Departure Mono',monospace; font-size:15px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(20,20,25,0.6); text-align:center; line-height:1.4;">Por<br>definir</span>
+        <span style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#141419;">01</span>
+        <span style="font-family:'Departure Mono',monospace; font-size:18px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(20,20,25,0.55); margin-top:4px;">PM</span>
       </div>
       <div class="flex flex-col items-end" style="gap:4px; padding-top:4px;">
         <span class="tag" style="font-size:16px; color:rgba(255,255,255,0.55); text-align:right;">Centro de Congresos</span>
+        <span class="tag" style="font-size:16px; color:rgba(255,255,255,0.55); text-align:right;">Auditorio 03</span>
         <span class="tag" style="font-size:16px; color:rgba(255,255,255,0.35); text-align:right;">Tecnológico de Monterrey GDL</span>
       </div>
     </div>
@@ -207,8 +210,11 @@ body {
 
   <!-- Footer -->
   <div class="relative z-10" style="background:rgba(255,255,255,0.04); border-top:1px solid rgba(255,255,255,0.06);">
-    <div style="padding:24px 0;">
-      <img src="../div-tic/DIVTIC - BLANCO.png" style="height:80px; opacity:0.9; display:block; margin:0 auto;">
+    <div style="padding:24px 48px; display:flex; align-items:center; justify-content:space-evenly;">
+      <img src="HackerRank GDL-Logo Light Narrow (1).png" style="height:64px; opacity:0.7;">
+      <img src="Logo_front_blue_1.svg" style="height:48px; opacity:0.7; filter:brightness(0) invert(1);">
+      <img src="tecnologico-de-monterrey-white.png" style="height:64px; opacity:0.7;">
+      <img src="https://aloi.tech/_next/static/media/logo.0-1bu6q5~ujhb.webp" style="height:48px; opacity:0.7;">
     </div>
   </div>
 
