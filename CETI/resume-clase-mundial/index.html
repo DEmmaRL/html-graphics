@@ -26,7 +26,7 @@
     }
 
     body {
-      background: #ffffff;
+      background: var(--black);
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -45,7 +45,7 @@
     .flyer {
       width: 1080px;
       height: 1920px;
-      background: var(--black);
+      background: #ffffff;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -164,7 +164,7 @@
 
     .success-text {
       display: none;
-      color: var(--green);
+      color: var(--terrain);
       animation: flip-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
@@ -173,11 +173,11 @@
       font-size: 18px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--terrain);
     }
 
     .badge {
-      background: var(--green);
+      background: var(--sky);
       color: var(--black);
       font-family: 'Departure Mono', monospace;
       font-size: 16px;
@@ -191,7 +191,7 @@
     .divider {
       width: 56px;
       height: 3px;
-      background: var(--green);
+      background: var(--terrain);
     }
 
     @keyframes blob1 {
@@ -254,9 +254,9 @@
 
       <!-- Header -->
       <div class="relative z-10 flex items-center gap-4 px-14 pt-16">
-        <img src="assets/Logo Light Wide.svg" style="height:36px;">
+        <img src="assets/Logo Dark Wide.svg" style="height:36px;">
         <span style="color:rgba(255,255,255,0.25); font-size:24px; font-weight:300;">|</span>
-        <span class="tag" style="font-size:28px; letter-spacing:0.2em; color:rgba(255,255,255,0.7);">Crew GDL</span>
+        <span class="tag" style="font-size:28px; letter-spacing:0.2em; color: vas(--terrain);">Crew GDL</span>
       </div>
 
       <!-- Eyebrow + Title + Fecha -->
@@ -267,7 +267,7 @@
           <span class="tag">&gt; <span class="typewriter-wrap"><span class="typewriter-inner"><span
                   id="typewriter"></span></span><span id="success-text" class="success-text">SUCCESS!</span></span><span
               class="cursor"></span></span>
-          <h1 class="font-bold text-white mt-6" style="font-size:80px; line-height:1.35;">
+          <h1 class="font-bold mt-6" style="font-size:80px; color: var(--terrain); line-height:1.35;">
             Asegura tu<br>futuro en<span style="color:var(--green);"> Big Tech</span>
           </h1>
           <div class="mt-10">
@@ -284,21 +284,20 @@
           <div
             style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); display:flex; flex-direction:column; align-items:center; justify-content:center;">
             <span
-              style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#fff;">28</span>
+              style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color: var(--terrain);">28</span>
             <span class="tag"
-              style="font-size:18px; color:rgba(255,255,255,0.8); margin-top:4px; white-space:nowrap;">Septiembre</span>
+              style="font-size:18px; color: var(--terrain); margin-top:4px; white-space:nowrap;">Septiembre</span>
           </div>
           <div
             style="width:160px; height:160px; border:1px solid rgba(5,199,112,0.3); background:var(--green); display:flex; flex-direction:column; align-items:center; justify-content:center;">
             <span
-              style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#141419;">03</span>
+              style="font-family:'Satoshi',sans-serif; font-weight:700; font-size:88px; line-height:1; color: var(--terrain);">03</span>
             <span
-              style="font-family:'Departure Mono',monospace; font-size:18px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(20,20,25,0.55); margin-top:4px;">PM</span>
+              style="font-family:'Departure Mono',monospace; font-size:18px; letter-spacing:0.12em; text-transform:uppercase; color: var(--terrain); margin-top:4px;">PM</span>
           </div>
-          <div class="flex flex-col items-end" style="gap:4px; padding-top:4px;">
-            <span class="tag" style="font-size:24px; color:rgba(255,255,255,0.55); text-align:right;">Audiovisual
-              Edificio B</span>
-            <span class="tag" style="font-size:20px; color:rgba(255,255,255,0.35); text-align:right;">CETI Tonalá</span>
+          <div class="flex flex-col items-end text-gray-400" style="gap:4px; padding-top:4px;">
+            <span class="tag text-gray-600" style="font-size:24px;  text-align:right;">Audiovisual Edificio B</span>
+            <span class="tag text-gray-400" style="font-size:20px; text-align:right;">CETI Tonalá</span>
           </div>
         </div>
 
@@ -308,19 +307,20 @@
       <div class="relative z-10 mt-auto mb-96 px-14">
         <div style="position:relative; height:680px;">
           <div class="blob-element blob-1"
-            style="position:absolute; bottom:0; left:45%; width:380px; height:380px; background:#003333; border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 80px rgba(5,199,112,0.2);">
+            style="position:absolute; bottom:0; left:45%; width:380px; height:380px; background: color-mix(in srgb, var(--green) 30%, transparent); border:2px solid rgba(5,199,112,0.4); box-shadow:0 0 80px rgba(5,199,112,0.2);">
           </div>
 
           <div class="blob-element blob-2"
-            style="position:absolute; bottom:35%; left:52%; width:260px; height:260px; background:#003333; border:2px solid rgba(5,199,112,0.3); box-shadow:0 0 60px rgba(5,199,112,0.15);">
+            style="position:absolute; bottom:35%; left:52%; width:260px; height:260px; background: color-mix(in srgb, var(--green) 30%, transparent); border:2px solid rgba(5,199,112,0.3); box-shadow:0 0 60px rgba(5,199,112,0.15);">
           </div>
 
           <img src="assets/oracle-cut.png"
-            style="position:absolute; bottom:-220px; left:50%; transform:translateX(-50%); height:980px; object-fit:contain; filter:drop-shadow(0 -8px 32px rgba(0,0,0,0.5)); -webkit-mask-image:linear-gradient(to bottom, black 90%, transparent 95%); mask-image:linear-gradient(to bottom, black 50%, transparent 77%);">
-          <div style="position:absolute; bottom:140px; left:63%;">
+            style="position:absolute; bottom:-220px; left:50%; transform:translateX(-50%); height:980px; object-fit:contain; filter:drop-shadow(0 -8px 32px rgba(0,0,0,0.5)); -webkit-mask-image:linear-gradient(to bottom, black 90%, transparent 95%); mask-image:linear-gradient(to bottom, black 60%, transparent 77%);">
+          <div style="position:absolute; bottom:140px; left:65%;">
             <span class="badge ml-8 mb-3 inline-block text-xl">Speaker</span>
-            <p class="ml-10 text-white font-bold mt-2" style="font-size:48px; line-height:1.1;">Lon Rivera</p>
-            <p class="ml-12 tag mt-2" style="color:var(--sky); font-size:20px;">Fullstack Engineer</p>
+            <p class="ml-10 font-bold mt-2" style="font-size:48px; color: var(--terrain); line-height:1.1;">Lon Rivera
+            </p>
+            <p class="ml-12 tag mt-2" style="color:var(--black); font-size:20px;">Ex-Googler</p>
           </div>
         </div>
       </div>
